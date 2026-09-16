@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import { pathToFileURL } from 'node:url';
 import tasksRouter from './routes/tasks.js';
 import { errorHandler, notFoundHandler } from './middleware/error.js';
 
@@ -21,6 +22,15 @@ app.use('/tasks', tasksRouter);
 app.use(notFoundHandler);
 app.use(errorHandler);
 
-app.listen(port, () => {
-  console.log(`Task API listening on http://localhost:${port}`);
-});
+const isLocalRun =
+  process.env.VERCEL === undefined &&
+  process.argv[1] &&
+  import.meta.url === pathToFileURL(process.argv[1]).href;
+
+if (isLocalRun) {
+  app.listen(port, () => {
+    console.log(`Task API listening on http://localhost:${port}`);
+  });
+}
+
+export default app;
