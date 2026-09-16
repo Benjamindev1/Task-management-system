@@ -1,5 +1,7 @@
 # Task Management System
 
+Live deployment: https://task-management-system-nine-red.vercel.app/
+
 A full-stack task manager built for the kLab Tech Upskill Program challenge. The project includes a React + Vite frontend, an Express + PostgreSQL backend, and a Neon cloud database setup.
 
 ## Project Overview

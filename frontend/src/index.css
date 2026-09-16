@@ -1,19 +1,16 @@
 :root {
-  --bg: #0f172a;
-  --surface: #1e293b;
-  --surface-2: #334155;
-  --surface-3: #1f2937;
-  --border: #475569;
-  --text: #e2e8f0;
-  --text-dim: #94a3b8;
-  --primary: #6366f1;
-  --primary-hover: #4f46e5;
-  --success: #10b981;
-  --warning: #f59e0b;
+  --bg: #111827;
+  --surface: #1f2937;
+  --surface-strong: #111827;
+  --border: #374151;
+  --text: #f3f4f6;
+  --muted: #9ca3af;
+  --primary: #f3f4f6;
+  --primary-text: #111827;
   --danger: #ef4444;
-  --danger-hover: #dc2626;
-  --radius: 12px;
-  --shadow: 0 18px 40px rgba(15, 23, 42, 0.45);
+  --danger-soft: #7f1d1d;
+  --success: #22c55e;
+  --radius: 10px;
 }
 
 * { box-sizing: border-box; }
@@ -25,7 +22,7 @@ html, body, #root {
 
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   background: var(--bg);
   color: var(--text);
   line-height: 1.5;
@@ -39,11 +36,7 @@ button {
   cursor: pointer;
   border: none;
   border-radius: var(--radius);
-  transition: opacity 0.15s ease, background 0.15s ease, transform 0.15s ease;
-}
-
-button:hover:not(:disabled) {
-  transform: translateY(-1px);
+  transition: opacity 0.15s ease, background 0.15s ease;
 }
 
 button:disabled {
@@ -53,7 +46,7 @@ button:disabled {
 
 input, textarea, select {
   width: 100%;
-  background: var(--surface-2);
+  background: var(--surface-strong);
   color: var(--text);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -62,12 +55,12 @@ input, textarea, select {
 
 input::placeholder,
 textarea::placeholder {
-  color: var(--text-dim);
+  color: var(--muted);
 }
 
 input:focus, textarea:focus, select:focus {
-  outline: 2px solid var(--primary);
-  outline-offset: 1px;
+  outline: none;
+  border-color: var(--text);
 }
 
 textarea {
@@ -96,7 +89,7 @@ textarea {
   text-transform: uppercase;
   letter-spacing: 0.08em;
   font-size: 0.7rem;
-  color: var(--text-dim);
+  color: var(--muted);
 }
 
 .app-header h1 {
@@ -108,34 +101,25 @@ textarea {
 .secondary-button,
 .danger-button,
 .pagination button {
-  padding: 0.65rem 1rem;
-  font-weight: 600;
+  padding: 0.7rem 1rem;
+  font-weight: 700;
 }
 
 .primary-button {
   background: var(--primary);
-  color: white;
-}
-
-.primary-button:hover:not(:disabled) {
-  background: var(--primary-hover);
+  color: var(--primary-text);
 }
 
 .secondary-button {
-  background: rgba(148, 163, 184, 0.12);
+  background: var(--surface);
   color: var(--text);
   border: 1px solid var(--border);
 }
 
 .danger-button {
-  background: rgba(239, 68, 68, 0.14);
-  color: #fecaca;
-  border: 1px solid rgba(239, 68, 68, 0.4);
-}
-
-.danger-button:hover:not(:disabled) {
-  background: var(--danger-hover);
-  color: white;
+  background: var(--danger-soft);
+  color: #fca5a5;
+  border: 1px solid var(--danger);
 }
 
 .filter-bar {
@@ -143,10 +127,9 @@ textarea {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
   padding: 1rem;
-  background: rgba(30, 41, 59, 0.8);
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  box-shadow: var(--shadow);
 }
 
 .field {
@@ -158,15 +141,7 @@ textarea {
 .field span,
 .field label {
   font-size: 0.85rem;
-  color: var(--text-dim);
-}
-
-.compact select {
-  min-width: 0;
-}
-
-.search-field {
-  min-width: 0;
+  color: var(--muted);
 }
 
 .app-main {
@@ -184,10 +159,9 @@ textarea {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  background: rgba(30, 41, 59, 0.78);
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  box-shadow: var(--shadow);
   padding: 1rem;
 }
 
@@ -231,7 +205,7 @@ textarea {
 
 .task-title.completed {
   text-decoration: line-through;
-  color: var(--text-dim);
+  color: var(--muted);
 }
 
 .priority-badge {
@@ -240,35 +214,37 @@ textarea {
   justify-content: center;
   border-radius: 999px;
   padding: 0.2rem 0.55rem;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 
 .priority-low {
-  background: rgba(16, 185, 129, 0.15);
-  color: #a7f3d0;
+  background: #1f2937;
+  color: #86efac;
+  border: 1px solid #22c55e;
 }
 
 .priority-medium {
-  background: rgba(245, 158, 11, 0.15);
+  background: #1f2937;
   color: #fcd34d;
+  border: 1px solid #f59e0b;
 }
 
 .priority-high {
-  background: rgba(239, 68, 68, 0.16);
+  background: #1f2937;
   color: #fca5a5;
+  border: 1px solid #ef4444;
 }
 
 .task-description {
   margin: 0.45rem 0 0.5rem;
-  color: var(--text-dim);
+  color: var(--muted);
   overflow-wrap: anywhere;
 }
 
 .task-meta {
-  color: var(--text-dim);
+  color: var(--muted);
   font-size: 0.8rem;
 }
 
@@ -279,12 +255,12 @@ textarea {
 }
 
 .state-message {
-  background: rgba(30, 41, 59, 0.7);
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 1.5rem;
   text-align: center;
-  color: var(--text-dim);
+  color: var(--muted);
 }
 
 .pagination {
@@ -293,32 +269,32 @@ textarea {
   justify-content: center;
   gap: 1rem;
   margin-top: 1.25rem;
-  color: var(--text-dim);
+  color: var(--muted);
 }
 
 .pagination button {
-  background: rgba(99, 102, 241, 0.15);
+  background: var(--surface);
   color: var(--text);
-  border: 1px solid rgba(99, 102, 241, 0.4);
+  border: 1px solid var(--border);
 }
 
 .banner {
   margin-top: 1rem;
   border-radius: var(--radius);
   padding: 0.8rem 1rem;
-  border: 1px solid transparent;
+  border: 1px solid var(--border);
 }
 
 .error-banner {
-  background: rgba(239, 68, 68, 0.12);
-  color: #fecaca;
-  border-color: rgba(239, 68, 68, 0.3);
+  background: #1f2937;
+  color: #fca5a5;
+  border-color: var(--danger);
 }
 
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(15, 23, 42, 0.72);
+  background: rgba(17, 24, 39, 0.8);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -330,8 +306,7 @@ textarea {
   width: min(100%, 560px);
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 16px;
-  box-shadow: var(--shadow);
+  border-radius: 12px;
   padding: 1.25rem;
 }
 
@@ -351,7 +326,7 @@ textarea {
 .icon-button {
   width: 2.2rem;
   height: 2.2rem;
-  background: rgba(148, 163, 184, 0.12);
+  background: var(--surface-strong);
   color: var(--text);
   border: 1px solid var(--border);
   border-radius: 999px;
@@ -401,8 +376,8 @@ textarea {
 }
 
 .form-error-banner {
-  background: rgba(239, 68, 68, 0.12);
-  border: 1px solid rgba(239, 68, 68, 0.24);
+  background: #1f2937;
+  border: 1px solid var(--danger);
   border-radius: var(--radius);
   padding: 0.7rem 0.8rem;
 }
