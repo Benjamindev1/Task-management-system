@@ -10,9 +10,11 @@ if (!databaseUrl) {
   console.warn('DATABASE_URL is not set. Configure it in backend/.env before starting the API.');
 }
 
+const isNeonConnection = databaseUrl?.includes('neon.tech');
+
 const pool = new Pool({
   connectionString: databaseUrl,
-  ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
+  ssl: isNeonConnection ? { rejectUnauthorized: false } : false,
   max: 10,
 });
 
