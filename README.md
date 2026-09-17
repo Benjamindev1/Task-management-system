@@ -66,7 +66,7 @@ VITE_API_URL=http://localhost:4000
 Create a backend `.env` file with your Neon database connection:
 
 ```env
-postgresql://neondb_owner:npg_N3UjwfpaMZI8@ep-restless-dust-b1gw4ss8-pooler.c-5.eu-central-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require
+DATABASE_URL=postgresql://user:password@host/dbname?sslmode=require
 PORT=4000
 ```
 
